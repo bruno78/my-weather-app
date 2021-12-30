@@ -1,6 +1,7 @@
 package com.brunogtavares.myweather.screen
 
 import android.window.SplashScreen
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
