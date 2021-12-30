@@ -9,7 +9,7 @@ data class WeatherInfo (
     val humidity: Int,
     val pop: Double,
     val pressure: Int,
-    val rain: Double,
+    val rain: Double = 0.0,
     val speed: Double,
     val sunrise: Int,
     val sunset: Int,

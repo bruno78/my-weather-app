@@ -1,11 +1,13 @@
 package com.brunogtavares.myweather.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.brunogtavares.myweather.screen.MainScreen
 import com.brunogtavares.myweather.screen.SplashScreen
+import com.brunogtavares.myweather.viewmodel.MainViewModel
 
 @Composable
 fun MyWeatherNavigation() {
@@ -18,7 +20,7 @@ fun MyWeatherNavigation() {
             SplashScreen(navController = navController)
         }
         composable(MyWeatherScreens.MainScreen.name) {
-            MainScreen(navController = navController)
+            MainScreen(navController = navController, viewModel = hiltViewModel<MainViewModel>())
         }
     }
 }

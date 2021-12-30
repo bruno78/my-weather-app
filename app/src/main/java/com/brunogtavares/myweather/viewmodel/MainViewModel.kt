@@ -17,13 +17,10 @@ class MainViewModel @Inject constructor(
     private val repository: MyWeatherRepository
 ) : ViewModel() {
 
-    private val screenState : MutableState<MainScreenState> = mutableStateOf(MainScreenState.Loading)
+    val screenState : MutableState<MainScreenState> = mutableStateOf(MainScreenState.Loading)
 
-    init {
-        loadWeather("New York")
-    }
 
-    private fun loadWeather(city: String) {
+    fun onLoadWeather(city: String) {
         viewModelScope.launch(Dispatchers.Main) {
             if (city.isEmpty()) return@launch
             val response = repository.getMyWeatherForecastAsync(city).await()
