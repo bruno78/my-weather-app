@@ -11,6 +11,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.brunogtavares.myweather.model.WeatherLocation
+import com.brunogtavares.myweather.navigation.MyWeatherScreens
 import com.brunogtavares.myweather.ui.theme.MyWeatherYellow
 import com.brunogtavares.myweather.utils.formatDate
 import com.brunogtavares.myweather.utils.formatDecimals
@@ -21,15 +22,18 @@ import com.brunogtavares.myweather.widgets.*
 @Composable
 fun MainScreen(
     navController: NavController,
-    viewModel: MainViewModel
+    viewModel: MainViewModel,
+    city: String?
 ) {
-    viewModel.onLoadWeather("Moscow")
+    val defaultCity = city ?: "Moscow"
+    viewModel.onLoadWeather(defaultCity)
 
     when (viewModel.screenState.value) {
         is MainScreenState.Loading -> CircularProgressIndicator()
         is MainScreenState.LoadSuccess -> MainScaffold(
             weatherLocation = (viewModel.screenState.value as MainScreenState.LoadSuccess).data,
-            navController = navController
+            navController = navController,
+            onSearchActionClicked = { navController.navigate(MyWeatherScreens.SearchScreen.name) }
         )
         is MainScreenState.LoadFailed -> Text("Failed")
     }
@@ -39,14 +43,16 @@ fun MainScreen(
 @Composable
 fun MainScaffold(
     weatherLocation: WeatherLocation,
-    navController: NavController
+    navController: NavController,
+    onSearchActionClicked: () -> Unit,
 ) {
     Scaffold(
         topBar = {
             AppBar(
                 title = weatherLocation.city.name + ", ${weatherLocation.city.country}",
                 navController = navController,
-                elevation = 5.dp
+                elevation = 5.dp,
+                onSearchActionClicked = onSearchActionClicked,
             )
         }
     ) {

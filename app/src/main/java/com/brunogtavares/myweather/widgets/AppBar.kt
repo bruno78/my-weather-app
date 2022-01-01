@@ -26,7 +26,7 @@ fun AppBar(
     isMainScreen: Boolean = true,
     elevation: Dp = 0.dp,
     navController: NavController,
-    onAddActionClicked: () -> Unit = {},
+    onSearchActionClicked: () -> Unit = {},
     onButtonClicked: () -> Unit = {}
 ) {
     TopAppBar(
@@ -42,7 +42,7 @@ fun AppBar(
         },
         actions = {
             if (isMainScreen) {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { onSearchActionClicked() }) {
                     Icon(
                         imageVector = Icons.Default.Search,
                         contentDescription = "Search Icon"
