@@ -4,7 +4,7 @@ enum class MyWeatherScreens {
     SplashScreen,
     MainScreen,
     AboutScreen,
-    FavoriteScreen,
+    FavoritesScreen,
     SearchScreen,
     SettingsScreen
 }

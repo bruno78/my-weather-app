@@ -8,9 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.brunogtavares.myweather.screen.MainScreen
-import com.brunogtavares.myweather.screen.SearchScreen
-import com.brunogtavares.myweather.screen.SplashScreen
+import com.brunogtavares.myweather.screen.*
 
 @ExperimentalComposeUiApi
 @Composable
@@ -35,8 +33,14 @@ fun MyWeatherNavigation() {
                 )
             }
         }
-        composable(MyWeatherScreens.SearchScreen.name) {
-            SearchScreen(navController = navController)
+        composable(MyWeatherScreens.SettingsScreen.name) {
+            SettingsScreen(navController = navController)
+        }
+        composable(MyWeatherScreens.FavoritesScreen.name) {
+            FavoritesScreen(navController = navController)
+        }
+        composable(MyWeatherScreens.AboutScreen.name) {
+            AboutScreen(navController = navController)
         }
     }
 }
