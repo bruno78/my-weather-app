@@ -9,9 +9,7 @@ import javax.inject.Singleton
 
 @Singleton
 interface MyWeatherRepository {
-    fun getMyWeatherForecastAsync(
-        city: String,
-    ): Deferred<Response<WeatherLocation>>
+    fun getMyWeatherForecastAsync(city: String): Deferred<Response<WeatherLocation>>
 }
 
 class MyWeatherRepositoryImpl @Inject constructor(

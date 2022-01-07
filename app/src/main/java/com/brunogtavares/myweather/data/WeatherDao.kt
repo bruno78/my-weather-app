@@ -1,4 +1,4 @@
-package com.brunogtavares.myweather.repository
+package com.brunogtavares.myweather.data
 
 import androidx.room.*
 import com.brunogtavares.myweather.model.Favorite
@@ -13,10 +13,10 @@ interface WeatherDao {
     suspend fun getFavoriteById(city: String): Favorite
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addFavorite(Favorite: Favorite)
+    suspend fun addFavorite(favorite: Favorite)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun updateFavorite(Favorite: Favorite)
+    suspend fun updateFavorite(favorite: Favorite)
 
     @Query("DELETE from favorite_table")
     suspend fun deleteAllFavorites()
